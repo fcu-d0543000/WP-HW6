@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+	
+	<script>
+		var i;
+		var colleges = ["商學院","工學院","理學院","資電學院"];
+		var dept = new Array(3);
+		dept[0] = ["會計系","國貿系","財稅系","經濟系","統計系"];//商學院
+		dept[1] = ["機械系","工工系","航太系","化工系"];//工學院
+		dept[2] = ["應數系","材料系","光電系"];//理學院
+		dept[3] = ["資訊系","電機系","電子系","自控系","資電不分系"];//資電學院
+		
+		$(document).ready(function(){
+			for(i = 0 ; i < colleges.length ; i++)
+				$("#college-list").append( '<option value="' + i + '">' + colleges[i] + '</option>' );
+			for(i = 0 ;i < dept[0].length ; i++)
+				$("#dept-list").append( '<option value="' + i + '">' + dept[0][i] + '</option>' );			
+			
+			$("#college-list").change(function(){
+				var op = document.getElementById("college-list").value
+				$("#dept-list").empty();	
+				for(i = 0 ;i < dept[op].length ; i++)
+					$("#dept-list").append( '<option value="' + i + '">' + dept[op][i] + '</option>' );				
+			});
+
+		});			
+	</script>
+
+</head>
+
+<body>
+
+	<h2>請選擇學院</h2>
+	<select id="college-list">
+	</select>
+	
+	<h2>請選擇科系</h2>
+	<select id="dept-list">
+	</select>
+	
+</body>
+</html>
